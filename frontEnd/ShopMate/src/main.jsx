@@ -6,19 +6,36 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { Home, AboutUs } from "./pages"
+import { Provider } from 'react-redux';
+import store from './store/store.js';
+
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  }, {
-    path: "/about",
-    element: <div>About</div>,
+    children: [
+      {
+        path: "/",
+        element: (
+          <Home />
+        ),
+      }, {
+        path: "/about",
+        element: (
+          <AboutUs />
+        ),
+      }
+    ]
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>,
 )
