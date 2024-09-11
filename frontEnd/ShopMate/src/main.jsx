@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { Home, AboutUs } from "./pages"
+import { Home, AboutUs, Cart, SignIn } from "./pages"
 import { Provider } from 'react-redux';
 import store from './store/store.js';
 
@@ -22,12 +22,25 @@ const router = createBrowserRouter([
         element: (
           <Home />
         ),
-      }, {
+      },
+      {
         path: "/about",
         element: (
           <AboutUs />
         ),
-      }
+      },
+      {
+        path: "/cart",
+        element: (
+          <Cart />
+        ),
+      },
+      {
+        path: "/signIn",
+        element: (
+          <SignIn />
+        ),
+      },
     ]
   }
 ]);
