@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, NavLink } from 'react-router-dom';
 import { Container, LogoutBtn } from '../index';
+import man from './assets/undraw_Male_avatar_g98d.png'
 
 
 
@@ -67,8 +68,29 @@ const Header = () => {
                         }
                     </ul>
 
-                    {/* Cart and Menu for Mobile */}
+                    {/* Profile, Cart and Menu for Mobile */}
                     <div className="flex items-center space-x-4">
+                        {/* <div className=" hidden lg:block">
+                            <img
+                                className="inline-block h-10 w-10 rounded-full"
+                                src={man}
+                                alt="man"
+                            />
+                        </div> */}
+                        {authStatus &&
+                            <NavLink
+                                to={'/profile'}
+                                onClick={() =>
+                                    navigate('/profile')}>
+                                <div className=" hidden lg:block">
+                                    <img
+                                        className="inline-block  w-12  rounded-full"
+                                        src={man}
+                                        alt="man"
+                                    />
+                                </div>
+                            </NavLink>
+                        }
                         <NavLink to={"/cart"} className="relative text-gray-800 hover:text-gray-600">
                             {/* Cart Icon */}
                             <svg
@@ -86,11 +108,13 @@ const Header = () => {
                                 </g>
                             </svg>
                             {/* Cart Items Count */}
-                            {itemCount ?
-                                <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center px-1 py-0.5 text-[10px] font-bold leading-none text-white bg-red-600 rounded-full" >
-                                    {itemCount}
-                                </span>
-                                : null}
+                            {
+                                // authStatus &&
+                                itemCount ?
+                                    <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center px-1 py-0.5 text-[10px] font-bold leading-none text-white bg-red-600 rounded-full" >
+                                        {itemCount}
+                                    </span>
+                                    : null}
                         </NavLink>
 
                         {/* Hamburger Menu (Mobile) */}
@@ -118,8 +142,25 @@ const Header = () => {
 
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && (
-                    <nav className="md:hidden">
-                        <ul className="flex flex-col p-4 space-y-2 bg-gray-100">
+                    <nav className="md:hidden absolute w-full">
+                        <ul className="flex flex-col p-4 space-y-2 bg-gray-100"
+                            onClick={toggleMobileMenu}
+                        >
+                            {authStatus &&
+                                <li key="man">
+                                    <NavLink
+                                        to={'/profile'}
+                                        onClick={() =>
+                                            navigate('/profile')}>
+                                        <div>
+                                            <img
+                                                className="inline-block h-14 w-14 rounded-full"
+                                                src={man}
+                                                alt="man"
+                                            />
+                                        </div>
+                                    </NavLink>
+                                </li>}
                             {navItems.map((item) => (
                                 item.active ? (
                                     <li
@@ -127,10 +168,14 @@ const Header = () => {
                                     >
                                         <NavLink
                                             to={item.slug}
-                                            onClick={() => navigate(item.slug)}
-                                            className={({ isActive }) => `${isActive ? 'text-red-600 text-lg hover:text-blue-800' : 'text-gray-600 hover:text-gray-800'
+                                            onClick={() =>
+                                                navigate(item.slug)}
+                                            className={({ isActive }) => `${isActive ? 'text-red-600  hover:text-blue-800 underline' : 'text-gray-600 hover:text-gray-800 w-full'
                                                 }`}
-                                        >{item.name}</NavLink>
+                                        ><div>
+                                                {item.name}
+                                            </div>
+                                        </NavLink>
                                     </li>) : null
                             ))}
                             {
