@@ -1,8 +1,8 @@
 import React from 'react'
 
-function ContainerBox({ children }) {
+function Container({ children }) {
     return <div className='w-screen max-w-7xl mx-auto px-4'>{children}</div>;
 
 }
 
-export default ContainerBox
+export default Container
