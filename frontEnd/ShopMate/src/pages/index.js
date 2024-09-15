@@ -1,13 +1,15 @@
 import Home from "./Home";
 import AboutUs from "./AboutUs";
 import Cart from "./Cart";
-import SignIn from "./SignIn";
+import LogIn from "./LogIn";
 import Profile from "./Profile";
+import SignUp from "./SignUp";
 
 export {
     Home,
     AboutUs,
     Cart,
-    SignIn,
-    Profile
+    LogIn,
+    Profile,
+    SignUp,
 }

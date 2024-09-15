@@ -25,8 +25,8 @@ const Header = () => {
             active: true,
         },
         {
-            name: 'Sign In',
-            slug: '/signIn',
+            name: 'LogIn',
+            slug: '/LogIn',
             active: !authStatus,
         },
     ];
