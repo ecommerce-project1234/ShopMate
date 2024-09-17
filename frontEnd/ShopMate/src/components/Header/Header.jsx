@@ -8,7 +8,8 @@ import man from './assets/undraw_Male_avatar_g98d.png'
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const authStatus = useSelector((state) => state.auth.status)
+    // const authStatus = useSelector((state) => state.auth.status)
+    let authStatus = true
     const cartData = useSelector((state) => state.cart.userData)
     const [itemCount, setItemCount] = useState(1)
     const navigate = useNavigate()
@@ -70,13 +71,6 @@ const Header = () => {
 
                     {/* Profile, Cart and Menu for Mobile */}
                     <div className="flex items-center space-x-4">
-                        {/* <div className=" hidden lg:block">
-                            <img
-                                className="inline-block h-10 w-10 rounded-full"
-                                src={man}
-                                alt="man"
-                            />
-                        </div> */}
                         {authStatus &&
                             <NavLink
                                 to={'/profile'}
@@ -180,7 +174,7 @@ const Header = () => {
                             ))}
                             {
                                 authStatus && (
-                                    <li>
+                                    <li >
                                         <LogoutBtn />
                                     </li>
                                 )
