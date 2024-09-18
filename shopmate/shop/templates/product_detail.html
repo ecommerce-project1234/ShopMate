@@ -9,21 +9,21 @@
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md">
-            <!-- Product Image -->
+    
             <img class="w-full h-64 object-cover rounded-t-lg" src="{{ product.image.url }}" alt="{{ product.name }}">
 
-            <!-- Product Details -->
+            
             <div class="p-6">
-                <!-- Product Title -->
+        
                 <h1 class="text-3xl font-bold mb-4">{{ product.name }}</h1>
                 
-                <!-- Product Description -->
+                
                 <p class="text-gray-700 text-lg mb-4">{{ product.description }}</p>
 
-                <!-- Product Price -->
+        
                 <p class="text-xl font-semibold mb-6">Price: ${{ product.price }}</p>
 
-                <!-- Add to Cart Button -->
+                
                 <form method="POST" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
