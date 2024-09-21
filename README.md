@@ -1,6 +1,3 @@
-# ShopMate
-Here’s a sample description for your e-commerce project repository:
-
 ---
 
 ## E-Commerce Website
